@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Oficina.Core.Entities
+namespace Oficinas.Core.Entities
 {
     public class Servico: BaseEntity
     {
@@ -13,7 +13,6 @@ namespace Oficina.Core.Entities
             UnidadeTrabralho = unidadeTrabralho;
             Descricao = descricao;
         }
-        public int Id { get; private set; }
         public int UnidadeTrabralho { get; private set; }
         public string Descricao { get; private set; }
     }

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Oficina.Infrastructure.Persistence
+namespace Oficinas.Infrastructure.Persistence
 {
     public class OficinaDbContext : DbContext
     {

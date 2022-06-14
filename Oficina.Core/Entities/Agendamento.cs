@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Oficina.Core.Entities
+namespace Oficinas.Core.Entities
 {
     public class Agendamento : BaseEntity
     {
@@ -15,7 +15,6 @@ namespace Oficina.Core.Entities
             DataAgendamento = dataAgendamento;
 
         }
-        public int Id { get; set; }
         public int IdOficina { get; set; }
         public int IdServico { get; set; }
         public Servico Servico { get; set; }
