@@ -17,5 +17,6 @@ namespace Oficinas.Core.Entities
         public string Nome { get; private set; }
         public int QtdMaxUnidadeTrabralho { get; private set; }
         public string Cnpj { get; private set; }
+        public List<Agendamento> Agendamentos { get; private set; }
     }
 }
