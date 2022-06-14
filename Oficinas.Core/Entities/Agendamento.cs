@@ -16,6 +16,7 @@ namespace Oficinas.Core.Entities
 
         }
         public int IdOficina { get; set; }
+        public Oficina Oficina { get; set; }
         public int IdServico { get; set; }
         public Servico Servico { get; set; }
         public DateTime DataAgendamento { get; set; }

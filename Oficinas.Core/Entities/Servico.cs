@@ -15,5 +15,7 @@ namespace Oficinas.Core.Entities
         }
         public int UnidadeTrabralho { get; private set; }
         public string Descricao { get; private set; }
+        public List<Agendamento> Agendamentos { get; private set; }
+
     }
 }
