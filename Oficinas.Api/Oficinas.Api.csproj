@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -22,9 +22,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Oficina.Application\Oficinas.Application.csproj" />
-    <ProjectReference Include="..\Oficina.Core\Oficinas.Core.csproj" />
-    <ProjectReference Include="..\Oficina.Infrastructure\Oficinas.Infrastructure.csproj" />
+    <ProjectReference Include="..\Oficinas.Application\Oficinas.Application.csproj" />
+    <ProjectReference Include="..\Oficinas.Core\Oficinas.Core.csproj" />
+    <ProjectReference Include="..\Oficinas.Infrastructure\Oficinas.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
