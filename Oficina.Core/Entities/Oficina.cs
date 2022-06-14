@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Oficina.Core.Entities
+namespace Oficinas.Core.Entities
 {
     public class Oficina : BaseEntity
     {
@@ -14,7 +14,6 @@ namespace Oficina.Core.Entities
             QtdMaxUnidadeTrabralho = qtdMaxUnidadeTrabralho;
             Cnpj = cnpj;
         }
-        public int Id { get; private set; }
         public string Nome { get; private set; }
         public int QtdMaxUnidadeTrabralho { get; private set; }
         public string Cnpj { get; private set; }
