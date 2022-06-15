@@ -17,11 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Oficinas.Application\Oficinas.Application.csproj" />
     <ProjectReference Include="..\Oficinas.Core\Oficinas.Core.csproj" />
     <ProjectReference Include="..\Oficinas.Infrastructure\Oficinas.Infrastructure.csproj" />
