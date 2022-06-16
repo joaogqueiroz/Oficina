@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Oficinas.Application.Queries.GetAllOficinas
+namespace Oficinas.Application.Commands.UpdateServico
 {
-    public class GetAllOficinasHandler
+    public class UpdateServicoCommandHandler
     {
     }
 }
