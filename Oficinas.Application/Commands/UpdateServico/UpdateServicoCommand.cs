@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MediatR;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,10 @@ using System.Threading.Tasks;
 
 namespace Oficinas.Application.Commands.UpdateServico
 {
-    public class UpdateServicoCommand
+    public class UpdateServicoCommand : IRequest<Unit>
     {
+        public int Id { get; private set; }
+        public int UnidadeTrabralho { get; private set; }
+        public string Descricao { get; private set; }
     }
 }

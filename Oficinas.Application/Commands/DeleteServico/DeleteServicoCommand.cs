@@ -1,16 +1,15 @@
 ﻿using MediatR;
-using Oficinas.Application.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Oficinas.Application.Queries.GetServicoById
+namespace Oficinas.Application.Commands.DeleteServico
 {
-    public class GetServiceByIdQuery : IRequest<ServicoViewModel>
+    public class DeleteServicoCommand : IRequest<Unit>
     {
-        public GetServiceByIdQuery(int id)
+        public DeleteServicoCommand(int id)
         {
             Id = id;
         }

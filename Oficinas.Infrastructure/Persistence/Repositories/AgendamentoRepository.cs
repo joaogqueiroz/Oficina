@@ -10,10 +10,10 @@ namespace Oficinas.Infrastructure.Persistence.Repositories
 {
     public class AgendamentoRepository : IAgendamentoRepository
     {
-        private readonly OficinaDbContext _dbContex;
-        public AgendamentoRepository(OficinaDbContext dbContex)
+        private readonly OficinaDbContext _dbContext;
+        public AgendamentoRepository(OficinaDbContext dbContext)
         {
-            _dbContex = dbContex;
+            _dbContext = dbContext;
         }
 
         public Task<List<Agendamento>> GetAllAsync()
@@ -41,9 +41,15 @@ namespace Oficinas.Infrastructure.Persistence.Repositories
             throw new NotImplementedException();
         }
 
-        public Task SaveChangesAsync()
+        public async Task UpdateAsync(Agendamento agendamento)
         {
-            throw new NotImplementedException();
+            await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task DeleteAsync(Agendamento agendamento)
+        {
+            _dbContext.Agendamentos.Remove(agendamento);
+            await _dbContext.SaveChangesAsync();
         }
     }
 }
