@@ -14,8 +14,7 @@ namespace Oficinas.Core.Repostories
         Task<Agendamento> GetByIdClient(int idCliente);
         Task<Agendamento> GetByIdOficina(int idOficina);
         Task AddAsync(Agendamento agendamento);
-        Task UpdateAsync(Agendamento agendamento);
-        Task DeleteAsync(int id);
+        Task SaveChangesAsync();
 
     }
 }

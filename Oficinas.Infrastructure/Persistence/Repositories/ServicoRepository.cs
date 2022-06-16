@@ -30,12 +30,7 @@ namespace Oficinas.Infrastructure.Persistence.Repositories
             throw new NotImplementedException();
         }
 
-        public Task UpdateAsync(Servico servico)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task DeleteAsync(int id)
+        public Task SaveChangesAsync()
         {
             throw new NotImplementedException();
         }

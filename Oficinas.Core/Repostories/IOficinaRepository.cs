@@ -12,8 +12,7 @@ namespace Oficinas.Core.Repostories
         Task<List<Oficina>> GetAllAsync();
         Task<Oficina> GetByIdAsync(int id);
         Task AddAsync(Oficina oficina);
-        Task UpdateAsync(Oficina oficina);
-        Task DeleteAsync(int id);
-        
+        Task SaveChangesAsync();
+
     }
 }
