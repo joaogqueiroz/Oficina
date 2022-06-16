@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Oficinas.Application.Queries.GetOficinaById
+namespace Oficinas.Application.Queries.GetAgendamentoById
 {
-    public class GetOficinaByIdCommandHandler
+    public class GetAgendamentoByIdQuery
     {
     }
 }

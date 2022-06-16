@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Oficinas.Application.Queries.GetServicoById
 {
-    public class GetServiceByIdCommand
+    public class GetServiceByIdQueryHandler
     {
     }
 }
