@@ -15,7 +15,9 @@ namespace Oficinas.Application.Commands.UpdateOficina
         public async Task<Unit> Handle(UpdateOficinaCommand request, CancellationToken cancellationToken)
         {
             var oficina = await _oficinaRepository.GetByIdAsync(request.Id);
-            oficina.Remove;
+            oficina.Update(request.Nome,request.QtdMaxUnidadeTrabralho, request.Cnpj);
+            await _oficinaRepository.UpdateAsync(oficina);
+            return Unit.Value;
         }
     }
 }

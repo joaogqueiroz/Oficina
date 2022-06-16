@@ -33,8 +33,14 @@ namespace Oficinas.Infrastructure.Persistence.Repositories
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task SaveChangesAsync()
+        public async Task UpdateAsync(Oficina oficina)
         {
+            await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task DeleteAsync(Oficina oficina)
+        {
+            _dbContext.Oficinas.Remove(oficina);
             await _dbContext.SaveChangesAsync();
         }
     }
