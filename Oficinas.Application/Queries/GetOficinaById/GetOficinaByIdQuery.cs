@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Oficinas.Application.Queries.GetOficinaById
 {
-    public class GetOficinaByIdCommand
+    public class GetOficinaByIdQuery
     {
     }
 }
