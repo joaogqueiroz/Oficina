@@ -1,4 +1,5 @@
-﻿using Oficinas.Core.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using Oficinas.Core.Entities;
 using Oficinas.Core.Repostories;
 using System;
 using System.Collections.Generic;
@@ -16,29 +17,33 @@ namespace Oficinas.Infrastructure.Persistence.Repositories
             _dbContext = dbContext;
         }
 
-        public Task<List<Agendamento>> GetAllAsync()
+        public async Task<List<Agendamento>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await _dbContext.Agendamentos
+                .Include(a => a.Oficina)
+                .Include(a => a.Servico)
+                .ToListAsync();
         }
 
-        public Task<Agendamento> GetByIdAsync(int id)
+        public async Task<Agendamento> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _dbContext.Agendamentos.SingleOrDefaultAsync(a => a.Id == id);
         }
 
-        public Task<Agendamento> GetByIdClient(int idCliente)
+        public async Task<Agendamento> GetByIdServico(int idServico)
         {
-            throw new NotImplementedException();
+            return await _dbContext.Agendamentos.SingleOrDefaultAsync(a => a.IdServico == idServico);
         }
 
-        public Task<Agendamento> GetByIdOficina(int idOficina)
+        public async Task<Agendamento> GetByIdOficina(int idOficina)
         {
-            throw new NotImplementedException();
+            return await _dbContext.Agendamentos.SingleOrDefaultAsync(a => a.IdOficina == idOficina);
         }
 
-        public Task AddAsync(Agendamento agendamento)
+        public async Task AddAsync(Agendamento agendamento)
         {
-            throw new NotImplementedException();
+            await _dbContext.Agendamentos.AddAsync(agendamento);
+            await _dbContext.SaveChangesAsync();
         }
 
         public async Task UpdateAsync(Agendamento agendamento)

@@ -24,7 +24,7 @@ namespace Oficinas.Infrastructure.Persistence.Repositories
 
         public async Task<Oficina> GetByIdAsync(int id)
         {
-            return await _dbContext.Oficinas.SingleOrDefaultAsync(p => p.Id == id);
+            return await _dbContext.Oficinas.SingleOrDefaultAsync(o => o.Id == id);
         }
 
         public async Task AddAsync(Oficina oficina)

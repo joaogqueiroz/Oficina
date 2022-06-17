@@ -6,11 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Oficinas.Application.Queries.GetAgendamentoById
+namespace Oficinas.Application.Queries.GetServicoById
 {
-    public class GetAgendamentoByIdQuery : IRequest<AgendamentoViewModel>
+    public class GetServicoByIdQuery : IRequest<ServicoViewModel>
     {
-        public GetAgendamentoByIdQuery(int id)
+        public GetServicoByIdQuery(int id)
         {
             Id = id;
         }

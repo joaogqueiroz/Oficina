@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 
 namespace Oficinas.Application.Queries.GetServicoById
 {
-    public class GetServiceByIdQueryHandler: IRequestHandler<GetServiceByIdQuery, ServicoViewModel>
+    public class GetServicoByIdQueryHandler: IRequestHandler<GetServicoByIdQuery, ServicoViewModel>
     {
         private readonly IServicoRepository _servicoRepository;
-        public GetServiceByIdQueryHandler(IServicoRepository servicoRepository)
+        public GetServicoByIdQueryHandler(IServicoRepository servicoRepository)
         {
             _servicoRepository = servicoRepository;
         }
 
-        public async Task<ServicoViewModel> Handle(GetServiceByIdQuery request, CancellationToken cancellationToken)
+        public async Task<ServicoViewModel> Handle(GetServicoByIdQuery request, CancellationToken cancellationToken)
         {
             var servico = await _servicoRepository.GetByIdAsync(request.Id);
             if (servico == null) return null;
