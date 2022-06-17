@@ -17,5 +17,10 @@ namespace Oficinas.Core.Entities
         public string Descricao { get; private set; }
         public List<Agendamento> Agendamentos { get; private set; }
 
+        public void Update(int unidadeTrabralho, string descricao) 
+        {
+            UnidadeTrabralho = unidadeTrabralho;
+            Descricao = descricao;
+        }
     }
 }

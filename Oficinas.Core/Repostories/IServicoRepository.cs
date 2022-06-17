@@ -13,7 +13,8 @@ namespace Oficinas.Core.Repostories
         Task<Servico> GetByIdAsync(int id);
         Task AddAsync(Servico servico);
         Task UpdateAsync(Servico servico);
-        Task DeleteAsync(int id);
+        Task DeleteAsync(Servico servico);
+
 
     }
 }

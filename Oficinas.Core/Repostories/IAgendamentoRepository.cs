@@ -11,11 +11,10 @@ namespace Oficinas.Core.Repostories
     {
         Task<List<Agendamento>> GetAllAsync();
         Task<Agendamento> GetByIdAsync(int id);
-        Task<Agendamento> GetByIdClient(int idCliente);
+        Task<Agendamento> GetByIdServico(int idServico);
         Task<Agendamento> GetByIdOficina(int idOficina);
         Task AddAsync(Agendamento agendamento);
         Task UpdateAsync(Agendamento agendamento);
-        Task DeleteAsync(int id);
-
+        Task DeleteAsync(Agendamento agendamento);
     }
 }

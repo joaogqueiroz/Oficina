@@ -1,16 +1,15 @@
 ﻿using MediatR;
-using Oficinas.Application.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Oficinas.Application.Queries.GetOficinaById
+namespace Oficinas.Application.Commands.DeleteAgendamento
 {
-    public class GetOficinaByIdQuery : IRequest<OficinaViewModel>
+    public class DeleteAgendamentoCommand : IRequest<Unit>
     {
-        public GetOficinaByIdQuery(int id)
+        public DeleteAgendamentoCommand(int id)
         {
             Id = id;
         }

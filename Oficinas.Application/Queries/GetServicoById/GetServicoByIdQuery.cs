@@ -6,11 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Oficinas.Application.Queries.GetOficinaById
+namespace Oficinas.Application.Queries.GetServicoById
 {
-    public class GetOficinaByIdQuery : IRequest<OficinaViewModel>
+    public class GetServicoByIdQuery : IRequest<ServicoViewModel>
     {
-        public GetOficinaByIdQuery(int id)
+        public GetServicoByIdQuery(int id)
         {
             Id = id;
         }

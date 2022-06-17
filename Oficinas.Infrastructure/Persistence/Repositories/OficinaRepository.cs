@@ -1,4 +1,5 @@
-﻿using Oficinas.Core.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using Oficinas.Core.Entities;
 using Oficinas.Core.Repostories;
 using System;
 using System.Collections.Generic;
@@ -10,35 +11,37 @@ namespace Oficinas.Infrastructure.Persistence.Repositories
 {
     public class OficinaRepository : IOficinaRepository
     {
-        private readonly OficinaDbContext _dbContex;
-        public OficinaRepository(OficinaDbContext dbContex)
+        private readonly OficinaDbContext _dbContext;
+        public OficinaRepository(OficinaDbContext dbContext)
         {
-            _dbContex = dbContex;
+            _dbContext = dbContext;
         }
 
-        public Task<List<Oficina>> GetAllAsync()
+        public async Task<List<Oficina>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await _dbContext.Oficinas.ToListAsync();
         }
 
-        public Task<Oficina> GetByIdAsync(int id)
+        public async Task<Oficina> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _dbContext.Oficinas.SingleOrDefaultAsync(o => o.Id == id);
         }
 
-        public Task AddAsync(Oficina oficina)
+        public async Task AddAsync(Oficina oficina)
         {
-            throw new NotImplementedException();
+            await _dbContext.Oficinas.AddAsync(oficina);
+            await _dbContext.SaveChangesAsync();
         }
 
-        public Task UpdateAsync(Oficina oficina)
+        public async Task UpdateAsync(Oficina oficina)
         {
-            throw new NotImplementedException();
+            await _dbContext.SaveChangesAsync();
         }
 
-        public Task DeleteAsync(int id)
+        public async Task DeleteAsync(Oficina oficina)
         {
-            throw new NotImplementedException();
+            _dbContext.Oficinas.Remove(oficina);
+            await _dbContext.SaveChangesAsync();
         }
     }
 }

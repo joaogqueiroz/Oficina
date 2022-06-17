@@ -20,6 +20,10 @@ namespace Oficinas.Core.Entities
         public int IdServico { get; set; }
         public Servico Servico { get; set; }
         public DateTime DataAgendamento { get; set; }
-
+        public void Update(int idServico, DateTime dataAgendamento)
+        {
+            IdServico = idServico;
+            DataAgendamento = dataAgendamento;
+        }
     }
 }
