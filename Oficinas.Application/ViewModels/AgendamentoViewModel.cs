@@ -8,13 +8,14 @@ namespace Oficinas.Application.ViewModels
 {
     public class AgendamentoViewModel
     {
-        public AgendamentoViewModel(int id, int idServico, string descricaoServico, int idOficina, string nomeOficina)
+        public AgendamentoViewModel(int id, int idServico, string descricaoServico, int idOficina, string nomeOficina, DateTime dataAgendamento)
         {
             Id = id;
             IdServico = idServico;
             DescricaoServico = descricaoServico;
             IdOficina = idOficina;
             NomeOficina = nomeOficina;
+            DataAgendamento = dataAgendamento;
         }
 
         public int Id { get; private set; }
@@ -23,5 +24,7 @@ namespace Oficinas.Application.ViewModels
 
         public int IdOficina { get; private set; }
         public string NomeOficina { get; private set; }
+        public DateTime DataAgendamento { get; private set; }
+
     }
 }

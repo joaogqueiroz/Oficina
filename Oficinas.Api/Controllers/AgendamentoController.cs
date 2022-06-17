@@ -42,6 +42,7 @@ namespace Oficinas.Api.Controllers
         public async Task<IActionResult> Post([FromBody] CreateAgendamentoCommand command)
         {
             var id = await _mediator.Send(command);
+            if (id == 0) return BadRequest("Carga de trabalho diaria atingida");
             return CreatedAtAction(nameof(GetById), new { id = id }, command);
         }
         [HttpPut]

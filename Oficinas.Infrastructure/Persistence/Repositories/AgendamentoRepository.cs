@@ -56,5 +56,16 @@ namespace Oficinas.Infrastructure.Persistence.Repositories
             _dbContext.Agendamentos.Remove(agendamento);
             await _dbContext.SaveChangesAsync();
         }
+
+        public async Task<bool> VerificaCargaAtingida(int idOficina, DateTime dataAgendamento)
+        {
+            var cargaAtual = _dbContext.Agendamentos.Where(a => a.IdOficina == idOficina && a.DataAgendamento == dataAgendamento.Date).Sum(a => a.Servico.UnidadeTrabralho);
+            var oficina = await _dbContext.Oficinas.SingleOrDefaultAsync(o => o.Id == idOficina);
+            if (cargaAtual > oficina.QtdMaxUnidadeTrabralho)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }
