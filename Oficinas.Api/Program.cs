@@ -1,9 +1,12 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Oficinas.Api.Filters;
 using Oficinas.Application.Commands.CreateOficina;
 using Oficinas.Core.Repostories;
 using Oficinas.Infrastructure.Persistence;
 using Oficinas.Infrastructure.Persistence.Repositories;
+using FluentValidation.AspNetCore;
+using Oficinas.Application.Validators;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +17,8 @@ builder.Services.AddScoped<IOficinaRepository, OficinaRepository>();
 builder.Services.AddScoped<IServicoRepository, ServicoRepository>();
 builder.Services.AddScoped<IAgendamentoRepository, AgendamentoRepository>();
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(options => options.Filters.Add(typeof(ValidationFilter)))
+    .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<CreateOficinaCommandValidator>());
 builder.Services.AddMediatR(typeof(CreateOficinaCommand));
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

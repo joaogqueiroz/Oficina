@@ -27,7 +27,8 @@ namespace Oficinas.Application.Queries.GetAgendamentoById
                 agendamento.IdServico,
                 agendamento.Servico.Descricao,
                 agendamento.IdOficina,
-                agendamento.Oficina.Nome
+                agendamento.Oficina.Nome,
+                agendamento.DataAgendamento
                 );
             return agendamentoViewModel;
         }

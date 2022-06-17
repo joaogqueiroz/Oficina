@@ -22,7 +22,7 @@ namespace Oficinas.Application.Queries.GetAllAgendamento
         {
             var agendamentos = await _agendamentoRepository.GetAllAsync();
             var agendamentoViewModel = agendamentos
-                .Select(a => new AgendamentoViewModel(a.Id, a.IdServico, a.Servico.Descricao, a.IdOficina, a.Oficina.Nome))
+                .Select(a => new AgendamentoViewModel(a.Id, a.IdServico, a.Servico.Descricao, a.IdOficina, a.Oficina.Nome, a.DataAgendamento))
                 .ToList();
             return agendamentoViewModel;
         }

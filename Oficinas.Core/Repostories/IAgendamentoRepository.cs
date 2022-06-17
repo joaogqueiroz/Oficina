@@ -13,6 +13,7 @@ namespace Oficinas.Core.Repostories
         Task<Agendamento> GetByIdAsync(int id);
         Task<Agendamento> GetByIdServico(int idServico);
         Task<Agendamento> GetByIdOficina(int idOficina);
+        Task<bool> VerificaCargaAtingida(int idOficina, DateTime dataAgendamento);
         Task AddAsync(Agendamento agendamento);
         Task UpdateAsync(Agendamento agendamento);
         Task DeleteAsync(Agendamento agendamento);

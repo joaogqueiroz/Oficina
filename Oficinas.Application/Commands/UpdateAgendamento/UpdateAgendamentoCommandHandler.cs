@@ -18,7 +18,10 @@ namespace Oficinas.Application.Commands.UpdateAgendamento
 
         public async Task<Unit> Handle(UpdateAgendamentoCommand request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var agendamento = await _agendamentoRepository.GetByIdAsync(request.Id);
+            agendamento.Update(request.IdServico, request.DataAgendamento.Date);
+            await _agendamentoRepository.UpdateAsync(agendamento);
+            return Unit.Value;
         }
     }
 }
