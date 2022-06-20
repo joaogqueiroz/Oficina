@@ -38,7 +38,7 @@ namespace Oficinas.Api.Controllers
             return CreatedAtAction(nameof(GetById), new { id = id }, command);
         }
         // api/usuarios/login   
-        [HttpPut("login")]
+        [HttpPost("login")]
         [AllowAnonymous]
         public async Task<IActionResult> Login([FromBody] LoginUsuarioCommand command)
         {

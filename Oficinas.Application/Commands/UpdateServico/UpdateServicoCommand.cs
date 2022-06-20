@@ -9,8 +9,8 @@ namespace Oficinas.Application.Commands.UpdateServico
 {
     public class UpdateServicoCommand : IRequest<Unit>
     {
-        public int Id { get; private set; }
-        public int UnidadeTrabralho { get; private set; }
-        public string Descricao { get; private set; }
+        public int Id { get; set; }
+        public int UnidadeTrabralho { get; set; }
+        public string Descricao { get;  set; }
     }
 }

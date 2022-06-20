@@ -8,10 +8,11 @@ namespace Oficinas.Core.Entities
 {
     public class Agendamento : BaseEntity
     {
-        public Agendamento(int idOficina, int idServico, DateTime dataAgendamento)
+        public Agendamento(int idOficina, int idServico,int idUsuario, DateTime dataAgendamento)
         {
             IdOficina = idOficina;
             IdServico = idServico;
+            IdUsuario = idUsuario;
             DataAgendamento = dataAgendamento;
 
         }

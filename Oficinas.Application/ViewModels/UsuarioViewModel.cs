@@ -9,7 +9,7 @@ namespace Oficinas.Application.ViewModels
 {
     public class UsuarioViewModel
     {
-        public UsuarioViewModel(string nomeCompleto, string email, DateOnly dataNascimento, DateOnly dataCriacao, RolesEnum role)
+        public UsuarioViewModel(string nomeCompleto, string email, DateTime dataNascimento, DateTime dataCriacao, RolesEnum role)
         {
             NomeCompleto = nomeCompleto;
             Email = email;
@@ -20,8 +20,8 @@ namespace Oficinas.Application.ViewModels
 
         public string NomeCompleto { get; private set; }
         public string Email { get; private set; }
-        public DateOnly DataNascimento { get; private set; }
-        public DateOnly DataCriacao { get; private set; }
+        public DateTime DataNascimento { get; private set; }
+        public DateTime DataCriacao { get; private set; }
         public RolesEnum Role { get; private set; }
     }
 }

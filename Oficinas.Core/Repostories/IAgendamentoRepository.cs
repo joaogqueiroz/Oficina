@@ -10,10 +10,11 @@ namespace Oficinas.Core.Repostories
     public interface IAgendamentoRepository
     {
         Task<List<Agendamento>> GetAllAsync();
+        Task<List<Agendamento>> GetByDateAsync(DateTime dataInicio, DateTime dataFim);
         Task<Agendamento> GetByIdAsync(int id);
         Task<Agendamento> GetByIdServico(int idServico);
         Task<Agendamento> GetByIdOficina(int idOficina);
-        Task<bool> VerificaCargaAtingida(int idOficina, DateTime dataAgendamento);
+        Task<bool> VerificaCargaAtingida(int idOficina, int idServico, DateTime dataAgendamento);
         Task AddAsync(Agendamento agendamento);
         Task UpdateAsync(Agendamento agendamento);
         Task DeleteAsync(Agendamento agendamento);

@@ -12,7 +12,7 @@ namespace Oficinas.Application.Commands.CreateUsuario
     {
         public string NomeCompleto { get; set; }
         public string Email { get; set; }
-        public DateOnly DataNascimento { get; set; }
+        public DateTime DataNascimento { get; set; }
         public string Senha { get; set; }
         public RolesEnum Role { get; set; }
     }

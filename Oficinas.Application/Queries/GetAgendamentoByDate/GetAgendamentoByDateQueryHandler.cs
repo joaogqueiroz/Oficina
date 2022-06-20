@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using Oficinas.Application.Queries.GetAllServico;
 using Oficinas.Application.ViewModels;
 using Oficinas.Core.Repostories;
 using System;
@@ -8,23 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Oficinas.Application.Queries.GetAllAgendamento
+namespace Oficinas.Application.Queries.GetAgendamentoByDate
 {
-    public class GetAllAgendamentoQueryHandler : IRequestHandler<GetAllAgendamentoQuery, List<AgendamentoViewModel>>
+    public class GetAgendamentoByDateQueryHandler : IRequestHandler<GetAgendamentoByDateQuery, List<AgendamentoViewModel>>
     {
         private readonly IAgendamentoRepository _agendamentoRepository;
-        public GetAllAgendamentoQueryHandler(IAgendamentoRepository agendamentoRepository)
+        public GetAgendamentoByDateQueryHandler(IAgendamentoRepository agendamentoRepository)
         {
             _agendamentoRepository = agendamentoRepository;
         }
-
-        public async Task<List<AgendamentoViewModel>> Handle(GetAllAgendamentoQuery request, CancellationToken cancellationToken)
+        public async Task<List<AgendamentoViewModel>> Handle(GetAgendamentoByDateQuery request, CancellationToken cancellationToken)
         {
-            var agendamentos = await _agendamentoRepository.GetAllAsync();
+            var agendamentos = await _agendamentoRepository.GetByDateAsync(request.DataInicio, request.DataFim);
             var agendamentoViewModel = agendamentos
                 .Select(a => new AgendamentoViewModel(
-                    a.Id, 
-                    a.IdServico, 
+                    a.Id, a.IdServico, 
                     a.Servico.Descricao, 
                     a.IdOficina, 
                     a.Oficina.Nome,

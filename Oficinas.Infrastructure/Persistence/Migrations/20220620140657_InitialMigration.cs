@@ -41,6 +41,24 @@ namespace Oficinas.Infrastructure.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Usuarios",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    NomeCompleto = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DataNascimento = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DataCriacao = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Senha = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Role = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Usuarios", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Agendamentos",
                 columns: table => new
                 {
@@ -48,6 +66,7 @@ namespace Oficinas.Infrastructure.Persistence.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IdOficina = table.Column<int>(type: "int", nullable: false),
                     IdServico = table.Column<int>(type: "int", nullable: false),
+                    IdUsuario = table.Column<int>(type: "int", nullable: false),
                     DataAgendamento = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -65,6 +84,12 @@ namespace Oficinas.Infrastructure.Persistence.Migrations
                         principalTable: "Servicos",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Agendamentos_Usuarios_IdUsuario",
+                        column: x => x.IdUsuario,
+                        principalTable: "Usuarios",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -76,6 +101,11 @@ namespace Oficinas.Infrastructure.Persistence.Migrations
                 name: "IX_Agendamentos_IdServico",
                 table: "Agendamentos",
                 column: "IdServico");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Agendamentos_IdUsuario",
+                table: "Agendamentos",
+                column: "IdUsuario");
         }
 
         /// <inheritdoc />
@@ -89,6 +119,9 @@ namespace Oficinas.Infrastructure.Persistence.Migrations
 
             migrationBuilder.DropTable(
                 name: "Servicos");
+
+            migrationBuilder.DropTable(
+                name: "Usuarios");
         }
     }
 }

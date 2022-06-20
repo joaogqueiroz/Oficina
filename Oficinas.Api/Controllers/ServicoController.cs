@@ -22,7 +22,7 @@ namespace Oficinas.Api.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "1, 2")]
+        [Authorize(Roles = "Cliente, Empregado")]
         public async Task<IActionResult> Get()
         {
             var query = new GetAllServicoQuery();
@@ -30,8 +30,8 @@ namespace Oficinas.Api.Controllers
 
             return Ok(getAllServicos);
         }
-        [HttpGet("Id")]
-        [Authorize(Roles = "1, 2")]
+        [HttpGet("{id}")]
+        [Authorize(Roles = "Cliente, Empregado")]
         public async Task<IActionResult> GetById(int Id)
         {
             var query = new GetServicoByIdQuery(Id);
@@ -43,22 +43,21 @@ namespace Oficinas.Api.Controllers
             return Ok(oficina);
         }
         [HttpPost]
-        [Authorize(Roles = "2")]
+        [Authorize(Roles = "Empregado")]
         public async Task<IActionResult> Post([FromBody] CreateServicoCommand command)
         {
             var id = await _mediator.Send(command);
             return CreatedAtAction(nameof(GetById), new { id = id }, command);
         }
         [HttpPut]
-        [Authorize(Roles = "2")]
+        [Authorize(Roles = "Empregado")]
         public async Task<IActionResult> Put(int id, [FromBody] UpdateServicoCommand command)
         {
-
             await _mediator.Send(command);
             return NoContent();
         }
         [HttpDelete]
-        [Authorize(Roles = "2")]
+        [Authorize(Roles = "Empregado")]
         public async Task<IActionResult> Delete(int Id)
         {
             var command = new DeleteServicoCommand(Id);

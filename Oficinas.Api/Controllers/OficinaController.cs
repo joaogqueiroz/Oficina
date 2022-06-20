@@ -30,7 +30,7 @@ namespace Oficinas.Api.Controllers
 
             return Ok(getAllOficinas);
         }
-        [HttpGet("Id")]
+        [HttpGet("{id}")]
         [AllowAnonymous]
         public async Task<IActionResult> GetById(int Id)
         {
@@ -50,7 +50,7 @@ namespace Oficinas.Api.Controllers
             return CreatedAtAction(nameof(GetById), new { id = id }, command);
         }
         [HttpPut]
-        [Authorize(Roles = "2")]
+        [Authorize(Roles = "Empregado")]
         public async Task<IActionResult> Put(int id, [FromBody] UpdateOficinaCommand command)
         {
 
@@ -58,7 +58,7 @@ namespace Oficinas.Api.Controllers
             return NoContent();
         }
         [HttpDelete]
-        [Authorize(Roles = "2")]
+        [Authorize(Roles = "Empregado")]
         public async Task<IActionResult> Delete(int Id)
         {
             var command = new DeleteOficinaCommand(Id);

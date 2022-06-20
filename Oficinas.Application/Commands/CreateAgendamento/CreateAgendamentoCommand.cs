@@ -11,6 +11,7 @@ namespace Oficinas.Application.Commands.CreateAgendamento
     {
         public int IdOficina { get; set; }
         public int IdServico { get; set; }
+        public int IdUsuario{ get; set; }
         public DateTime DataAgendamento { get; set; }
     }
 }
