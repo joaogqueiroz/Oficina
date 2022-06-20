@@ -5,17 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Oficinas.Core.Entities
+namespace Oficinas.Application.ViewModels
 {
-    public class Usuario : BaseEntity
+    public class UsuarioViewModel
     {
-        public Usuario(string nomeCompleto, string email, DateOnly dataNascimento, string senha, RolesEnum role)
+        public UsuarioViewModel(string nomeCompleto, string email, DateOnly dataNascimento, DateOnly dataCriacao, RolesEnum role)
         {
             NomeCompleto = nomeCompleto;
             Email = email;
             DataNascimento = dataNascimento;
-            DataCriacao = DateOnly.FromDateTime(DateTime.Now);
-            Senha = senha;
+            DataCriacao = dataCriacao;
             Role = role;
         }
 
@@ -23,9 +22,6 @@ namespace Oficinas.Core.Entities
         public string Email { get; private set; }
         public DateOnly DataNascimento { get; private set; }
         public DateOnly DataCriacao { get; private set; }
-        public string Senha { get; private set; }
         public RolesEnum Role { get; private set; }
-        public List<Agendamento> Agendamentos { get; private set; }
-
     }
 }

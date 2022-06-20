@@ -6,11 +6,13 @@ using Oficinas.Application.Queries.GetAllAgendamento;
 using Oficinas.Application.Queries.GetAgendamentoById;
 using Oficinas.Application.Commands.DeleteAgendamento;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Oficinas.Api.Controllers
 {
     [Route("api/agendamento")]
     [ApiController]
+    [Authorize]
     public class AgendamentoController : ControllerBase
     {
         private readonly IMediator _mediator;

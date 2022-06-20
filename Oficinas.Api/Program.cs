@@ -22,6 +22,7 @@ builder.Services.AddDbContext<OficinaDbContext>(options => options.UseSqlServer(
 builder.Services.AddScoped<IOficinaRepository, OficinaRepository>();
 builder.Services.AddScoped<IServicoRepository, ServicoRepository>();
 builder.Services.AddScoped<IAgendamentoRepository, AgendamentoRepository>();
+builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 
 builder.Services.AddControllers(options => options.Filters.Add(typeof(ValidationFilter)))
     .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<CreateOficinaCommandValidator>());

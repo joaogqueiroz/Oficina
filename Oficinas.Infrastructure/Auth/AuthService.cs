@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using Oficinas.Core.Enums;
 using Oficinas.Core.Services;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,7 @@ namespace Oficinas.Infrastructure.Auth
         {
             _configuration = configuration;
         }
-        public string GenerateJwtToken(string email, string role)
+        public string GenerateJwtToken(string email, RolesEnum role)
         {
             var issuer = _configuration["Jwt:Issuer"];
             var audience = _configuration["Jwt:Audience"];
@@ -31,7 +32,7 @@ namespace Oficinas.Infrastructure.Auth
             var claims = new List<Claim>
       {
           new Claim("userName", email),
-          new Claim(ClaimTypes.Role, role)
+          new Claim(ClaimTypes.Role, role.ToString())
        };
             var token = new JwtSecurityToken(
              issuer: issuer,

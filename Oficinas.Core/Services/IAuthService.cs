@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oficinas.Core.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace Oficinas.Core.Services
 {
     public interface IAuthService
     {
-        string GenerateJwtToken(string email, string role);
+        string GenerateJwtToken(string email, RolesEnum role);
         string ComputeSha256Hash(string password);
     }
 }
