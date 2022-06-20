@@ -6,11 +6,14 @@ using Oficinas.Application.Queries.GetAllAgendamento;
 using Oficinas.Application.Queries.GetAgendamentoById;
 using Oficinas.Application.Commands.DeleteAgendamento;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
+using Oficinas.Application.Queries.GetAgendamentoByDate;
 
 namespace Oficinas.Api.Controllers
 {
     [Route("api/agendamento")]
     [ApiController]
+    [Authorize]
     public class AgendamentoController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -27,7 +30,15 @@ namespace Oficinas.Api.Controllers
 
             return Ok(getAllAgendamentos);
         }
-        [HttpGet("Id")]
+        [HttpGet("getbydate")]
+        public async Task<IActionResult> GetByDate(DateTime dataInicio, DateTime dataFim)
+        {
+            var query = new GetAgendamentoByDateQuery(dataInicio,dataFim);
+            var agendamentosByDate = await _mediator.Send(query);
+
+            return Ok(agendamentosByDate);
+        }
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int Id)
         {
             var query = new GetAgendamentoByIdQuery(Id);

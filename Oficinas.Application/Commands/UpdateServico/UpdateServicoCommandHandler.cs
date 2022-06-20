@@ -18,10 +18,10 @@ namespace Oficinas.Application.Commands.UpdateServico
 
         public async Task<Unit> Handle(UpdateServicoCommand request, CancellationToken cancellationToken)
         {
-                var servico = await _servicoRepository.GetByIdAsync(request.Id);
-                servico.Update(request.UnidadeTrabralho,request.Descricao);
-                await _servicoRepository.UpdateAsync(servico);
-                return Unit.Value;
+            var servico = await _servicoRepository.GetByIdAsync(request.Id);
+            servico.Update(request.UnidadeTrabralho, request.Descricao);
+            await _servicoRepository.UpdateAsync(servico);
+            return Unit.Value;
         }
     }
 }

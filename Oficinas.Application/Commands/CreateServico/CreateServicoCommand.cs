@@ -9,13 +9,7 @@ namespace Oficinas.Application.Commands.CreateServico
 {
     public class CreateServicoCommand : IRequest<int>
     {
-        public CreateServicoCommand(int unidadeTrabralho, string descricao)
-        {
-            UnidadeTrabralho = unidadeTrabralho;
-            Descricao = descricao;
-        }
-
-        public int UnidadeTrabralho { get; private set; }
-        public string Descricao { get; private set; }
+        public int UnidadeTrabralho { get; set; }
+        public string Descricao { get;  set; }
     }
 }

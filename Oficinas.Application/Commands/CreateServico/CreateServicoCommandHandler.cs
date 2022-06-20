@@ -19,7 +19,7 @@ namespace Oficinas.Application.Commands.CreateServico
 
         public async Task<int> Handle(CreateServicoCommand request, CancellationToken cancellationToken)
         {
-            var servico = new Servico(request.UnidadeTrabralho,request.Descricao);
+            var servico = new Servico(request.UnidadeTrabralho, request.Descricao);
             await _servicoRepository.AddAsync(servico);
             return servico.Id;
         }

@@ -12,7 +12,7 @@ using Oficinas.Infrastructure.Persistence;
 namespace Oficinas.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(OficinaDbContext))]
-    [Migration("20220616053547_InitialMigration")]
+    [Migration("20220620140657_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -42,11 +42,16 @@ namespace Oficinas.Infrastructure.Persistence.Migrations
                     b.Property<int>("IdServico")
                         .HasColumnType("int");
 
+                    b.Property<int>("IdUsuario")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("IdOficina");
 
                     b.HasIndex("IdServico");
+
+                    b.HasIndex("IdUsuario");
 
                     b.ToTable("Agendamentos");
                 });
@@ -95,6 +100,40 @@ namespace Oficinas.Infrastructure.Persistence.Migrations
                     b.ToTable("Servicos");
                 });
 
+            modelBuilder.Entity("Oficinas.Core.Entities.Usuario", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("DataCriacao")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DataNascimento")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NomeCompleto")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Role")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Senha")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Usuarios");
+                });
+
             modelBuilder.Entity("Oficinas.Core.Entities.Agendamento", b =>
                 {
                     b.HasOne("Oficinas.Core.Entities.Oficina", "Oficina")
@@ -109,9 +148,17 @@ namespace Oficinas.Infrastructure.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Oficinas.Core.Entities.Usuario", "Usuario")
+                        .WithMany("Agendamentos")
+                        .HasForeignKey("IdUsuario")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Oficina");
 
                     b.Navigation("Servico");
+
+                    b.Navigation("Usuario");
                 });
 
             modelBuilder.Entity("Oficinas.Core.Entities.Oficina", b =>
@@ -120,6 +167,11 @@ namespace Oficinas.Infrastructure.Persistence.Migrations
                 });
 
             modelBuilder.Entity("Oficinas.Core.Entities.Servico", b =>
+                {
+                    b.Navigation("Agendamentos");
+                });
+
+            modelBuilder.Entity("Oficinas.Core.Entities.Usuario", b =>
                 {
                     b.Navigation("Agendamentos");
                 });

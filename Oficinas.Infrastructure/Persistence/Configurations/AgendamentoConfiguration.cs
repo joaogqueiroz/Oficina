@@ -15,11 +15,15 @@ namespace Oficinas.Infrastructure.Persistence.Configurations
                .WithMany(o => o.Agendamentos)
                .HasForeignKey(a => a.IdOficina);
 
-
             builder
                .HasOne(a => a.Servico)
                .WithMany(s => s.Agendamentos)
                .HasForeignKey(a => a.IdServico);
+
+            builder
+                .HasOne(a => a.Usuario)
+                .WithMany(u => u.Agendamentos)
+                .HasForeignKey(a => a.IdUsuario);
 
         }
     }

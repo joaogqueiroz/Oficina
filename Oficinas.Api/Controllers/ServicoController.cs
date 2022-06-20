@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Oficinas.Application.Commands.CreateServico;
@@ -21,6 +22,7 @@ namespace Oficinas.Api.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Cliente, Empregado")]
         public async Task<IActionResult> Get()
         {
             var query = new GetAllServicoQuery();
@@ -28,7 +30,8 @@ namespace Oficinas.Api.Controllers
 
             return Ok(getAllServicos);
         }
-        [HttpGet("Id")]
+        [HttpGet("{id}")]
+        [Authorize(Roles = "Cliente, Empregado")]
         public async Task<IActionResult> GetById(int Id)
         {
             var query = new GetServicoByIdQuery(Id);
@@ -40,19 +43,21 @@ namespace Oficinas.Api.Controllers
             return Ok(oficina);
         }
         [HttpPost]
+        [Authorize(Roles = "Empregado")]
         public async Task<IActionResult> Post([FromBody] CreateServicoCommand command)
         {
             var id = await _mediator.Send(command);
             return CreatedAtAction(nameof(GetById), new { id = id }, command);
         }
         [HttpPut]
+        [Authorize(Roles = "Empregado")]
         public async Task<IActionResult> Put(int id, [FromBody] UpdateServicoCommand command)
         {
-
             await _mediator.Send(command);
             return NoContent();
         }
         [HttpDelete]
+        [Authorize(Roles = "Empregado")]
         public async Task<IActionResult> Delete(int Id)
         {
             var command = new DeleteServicoCommand(Id);

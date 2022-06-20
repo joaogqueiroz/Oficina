@@ -20,10 +20,10 @@ namespace Oficinas.Application.Commands.CreateAgendamento
         public async Task<int> Handle(CreateAgendamentoCommand request, CancellationToken cancellationToken)
         {
             var atingido = await _agendamentoRepository
-                .VerificaCargaAtingida(request.IdOficina, request.DataAgendamento);
+                .VerificaCargaAtingida(request.IdOficina, request.IdServico, request.DataAgendamento);
             if(atingido != false)
             {
-                var agendamento = new Agendamento(request.IdOficina, request.IdServico, request.DataAgendamento.Date);
+                var agendamento = new Agendamento(request.IdOficina, request.IdServico,request.IdUsuario ,request.DataAgendamento.Date);
                 await _agendamentoRepository.AddAsync(agendamento);
                 return agendamento.Id;
             }
